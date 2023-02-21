@@ -25,7 +25,6 @@ jobs:
           subscriptionId: ${{secrets.AZURE_SUBSCRIPTION}}
           resourceGroupName: ${{secrets.AZURE_RESOURCEGROUP}}
           template: ./infra/main.bicep
-          failOnStdErr: false
       - name: logout
         run: |
           az logout
