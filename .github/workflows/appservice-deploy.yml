@@ -12,21 +12,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        with: 
+        with:
           submodules: true
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-  deploy:
-    name: "Deploy Bicep template"
-    uses: azure/arm-deploy@v1
-    with:
-      scope: resourcegroup
-      subscriptionId: ${{secrets.AZURE_SUBSCRIPTION}}
-      resourceGroupName: ${{secrets.AZURE_RESOURCEGROUP}}
-      template: ./infra/main.bicep
-      failOnStdErr: false
-    - name: logout 
-      run: |
-        az logout
+      - name: Deploy Bicep template
+        uses: azure/arm-deploy@v1
+        with:
+          scope: resourcegroup
+          subscriptionId: ${{secrets.AZURE_SUBSCRIPTION}}
+          resourceGroupName: ${{secrets.AZURE_RESOURCEGROUP}}
+          template: ./infra/main.bicep
+          failOnStdErr: false
+      - name: logout
+        run: |
+          az logout
