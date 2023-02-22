@@ -22,8 +22,8 @@ jobs:
         uses: azure/arm-deploy@v1
         with:
           scope: resourcegroup
-          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-          resourceGroupName: ${{ secrets.AZURE_RESOURCEGROUP }}
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION}}
+          resourceGroupName: ${{ secrets.AZURE_RESOURCEGROUP}}
           template: ./infra/main.bicep
           failOnStdErr: false
       - name: logout
